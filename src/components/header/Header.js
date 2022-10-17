@@ -1,8 +1,12 @@
 import React from 'react';
+
 import {NavLink, useNavigate} from "react-router-dom";
-import styled from "styled-components";
+
 import {SearchWindow} from "../searchWindow/SearchWindow";
+
+import styled from "styled-components";
 import css from './header.module.css'
+
 
 const setActive = ({isActive}) => isActive ? 'active-link' : ''
 
@@ -18,9 +22,14 @@ const Header = () => {
 
         <SearchMenuStyle>
           <NavLinkContainerStyle>
-            <NavLink className={css.a} style={({isActive}) => ({color: isActive ? 'red' : 'snow'})} to={'/home'}>Home</NavLink>
-            <NavLink className={css.a} style={({isActive}) => ({color: isActive ? 'red' : 'snow'})} to={'/movies'}>Movies</NavLink>
-            <NavLink className={css.a} style={({isActive}) => ({color: isActive ? 'red' : 'snow'})} to={'/tv'}>Tv Shows</NavLink>
+            <NavLink className={css.a}
+                     style={({isActive}) => ({color: isActive ? 'red' : 'snow'})}
+                     to={'/home'}>Home</NavLink>
+            <NavLink className={css.a} style={({isActive}) => ({color: isActive ? 'red' : 'snow'})}
+                     to={'/movies'}>Movies</NavLink>
+            <NavLink className={css.a}
+                     style={({isActive}) => ({color: isActive ? 'red' : 'snow'})}
+                     to={'/tv'}>Tv Shows</NavLink>
           </NavLinkContainerStyle>
 
           <div>
@@ -28,8 +37,8 @@ const Header = () => {
           </div>
 
           <div>
-            <ButtonStyle onClick={() => navigate(-1)}>Prev</ButtonStyle>
-            <ButtonStyle onClick={() => navigate(1)}>Next</ButtonStyle>
+            <ButtonStyle onClick={() => navigate(-1)}>Prev Page</ButtonStyle>
+            <ButtonStyle onClick={() => navigate(1)}>Next Page</ButtonStyle>
           </div>
 
         </SearchMenuStyle>
