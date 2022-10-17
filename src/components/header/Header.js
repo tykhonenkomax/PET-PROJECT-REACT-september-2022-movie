@@ -1,8 +1,7 @@
 import React from 'react';
 
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
-import {SearchWindow} from "../searchWindow/SearchWindow";
 
 import styled from "styled-components";
 import css from './header.module.css'
@@ -13,7 +12,6 @@ const setActive = ({isActive}) => isActive ? 'active-link' : ''
 const Header = () => {
 
 
-  const navigate = useNavigate();
   return (
 
       <GeneralBoxStyle>
@@ -31,15 +29,7 @@ const Header = () => {
                      style={({isActive}) => ({color: isActive ? 'red' : 'snow'})}
                      to={'/tv'}>Tv Shows</NavLink>
           </NavLinkContainerStyle>
-
-          <div>
-            <SearchWindow/>
-          </div>
-
-          <div>
-            <ButtonStyle onClick={() => navigate(-1)}>Prev Page</ButtonStyle>
-            <ButtonStyle onClick={() => navigate(1)}>Next Page</ButtonStyle>
-          </div>
+         <br/>
 
         </SearchMenuStyle>
 
@@ -74,22 +64,10 @@ const LogoStyleMax = styled.span`
   font-weight: bold;
 `;
 
-const ButtonStyle = styled.button`
-  border: solid 1px #c50303;
-  height: 50px;
-  width: 150px;
-  background: transparent;
-  color: snow;
-  margin-left: 20px;
-
-  &:hover {
-    background: transparent;
-    color: red;
-  }
-`;
 
 const NavLinkContainerStyle = styled.div`
   display: flex;
+  font-family: "Andale Mono", serif;
 `;
 
 export {Header};

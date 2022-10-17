@@ -5,17 +5,15 @@ import {movieServices} from "../../services";
 
 let initialState = {
   movies: [],
-  page:1,
-  genres:[],
   error: null,
   loading: false
 };
 
 let getAll = createAsyncThunk(
     'moviesSlice/getAll',
-    async (_, {rejectWithValue}) => {
+    async (page, {rejectWithValue}) => {
       try {
-        const {data} = await movieServices.getAll();
+        const {data} = await movieServices.getAll(page);
         return data
       } catch (e) {
         return rejectWithValue(e.response.data)

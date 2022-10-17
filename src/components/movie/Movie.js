@@ -10,15 +10,16 @@ const Movie = ({movie}) => {
           <TitleStyle>
             {movie.original_title}
           </TitleStyle>
-
           <br/>
           <div>
             <img style={{width: '200px'}} src={'https://image.tmdb.org/t/p/original/' + movie.poster_path}
                  alt="Movie Poster"/>
           </div>
+
           <OverviewStyle>
-           {movie.overview}
+            {movie.overview}
           </OverviewStyle>
+
         </GeneralCardStyle>
       </div>
   );

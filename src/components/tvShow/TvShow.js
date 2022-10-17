@@ -7,6 +7,7 @@ const TvShow = ({tv}) => {
   return (
 
       <div>
+
         <div>
           <GeneralCardStyle>
             <br/>

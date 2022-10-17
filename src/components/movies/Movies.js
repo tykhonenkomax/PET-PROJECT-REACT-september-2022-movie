@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {moviesActions} from "../../redux";
 import {Movie} from "../movie/Movie";
 import styled from "styled-components";
+import {useSearchParams} from "react-router-dom";
 
 
 const Movies = () => {
@@ -11,21 +12,51 @@ const Movies = () => {
 
   const dispatch = useDispatch();
 
+  const [query, setQuery] = useSearchParams({page: '1'});
+  const page = query.get('page');
+
   useEffect(() => {
-    dispatch(moviesActions.getAll())
-  }, [])
+    dispatch(moviesActions.getAll(page))
+  }, [page, dispatch])
 
-  console.log(movies.results)
+
+  const prevPage = () => {
+    const prev = +page - 1;
+    if (prev >= 1) {
+      setQuery({page: `${prev}`})
+    }
+  }
+
+  const nextPage = () => {
+    const next = +page + 1;
+    if (next <= 500) {
+      setQuery({page: `${next}`})
+    }
+  }
+
+
   return (
-      <GeneralStyle>
-        {loading && <h1>Loading.......................!</h1>}
+      <div>
 
-        {error && JSON.stringify(error)}
-        {
-          movies.map(movie => <Movie key={movie.id} movie={movie}/>)
-        }
-      </GeneralStyle>
+        <ButtonBox>
+          <ButtonStyle onClick={prevPage}>Prev</ButtonStyle>
+          <ButtonStyle onClick={nextPage}>Next</ButtonStyle>
+        </ButtonBox>
 
+        <GeneralStyle>
+
+          {loading && <h1>Loading.......................!</h1>}
+
+          {error && JSON.stringify(error)}
+
+          {
+
+            movies.map(movie => <Movie key={movie.id} movie={movie}/>)
+          }
+
+
+        </GeneralStyle>
+      </div>
   );
 };
 
@@ -35,5 +66,27 @@ const GeneralStyle = styled.div`
   background: black;
   justify-content: center;
 `;
+
+
+const ButtonStyle = styled.button`
+  border: solid 1px #c50303;
+  height: 50px;
+  width: 150px;
+  background: transparent;
+  color: snow;
+  margin-left: 20px;
+
+  &:hover {
+    background: transparent;
+    color: red;
+  }
+`;
+
+const ButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
+
 
 export {Movies};

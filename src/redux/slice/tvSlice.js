@@ -4,7 +4,6 @@ import {tvServices} from "../../services";
 
 let initialState = {
   tv: [],
-  page:1,
   genres:[],
   error: null,
   loading: false
@@ -12,9 +11,9 @@ let initialState = {
 
 let getAll = createAsyncThunk(
     'tvSlice/getAll',
-    async (_, {rejectWithValue}) => {
+    async (page, {rejectWithValue}) => {
       try {
-        const {data} = await tvServices.getAll();
+        const {data} = await tvServices.getAll(page);
         return data
       } catch (e) {
         return rejectWithValue(e.response.data)
