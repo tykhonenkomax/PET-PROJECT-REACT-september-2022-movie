@@ -1,9 +1,13 @@
 import React, {useEffect} from 'react';
+
 import {useDispatch, useSelector} from "react-redux";
 import {moviesActions} from "../../redux";
-import {Movie} from "../movie/Movie";
-import styled from "styled-components";
+
 import {useSearchParams} from "react-router-dom";
+
+import {Movie} from "../movie/Movie";
+
+import styled from "styled-components";
 
 
 const Movies = () => {
@@ -44,16 +48,11 @@ const Movies = () => {
         </ButtonBox>
 
         <GeneralStyle>
-
           {loading && <h1>Loading.......................!</h1>}
-
           {error && JSON.stringify(error)}
-
           {
-
             movies.map(movie => <Movie key={movie.id} movie={movie}/>)
           }
-
         </GeneralStyle>
       </div>
   );

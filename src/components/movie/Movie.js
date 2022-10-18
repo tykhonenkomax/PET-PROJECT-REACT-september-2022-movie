@@ -4,6 +4,7 @@ import ReactStars from "react-stars";
 
 const Movie = ({movie}) => {
 
+  console.log(movie)
   const ratingChanged = (newRating) => {
     console.log(newRating);
   }
@@ -26,11 +27,15 @@ const Movie = ({movie}) => {
               activeColor="#DC143C"
               value={movie.vote_average}
           />
+          <br/>
+          <OriginalCountry>language | {movie.original_language} |</OriginalCountry>
+          <br/>
 
-          <OverviewStyle>
-            {movie.overview}
-          </OverviewStyle>
-
+          <FirstAirDateStyle>
+            Release date: {movie.release_date}
+          </FirstAirDateStyle>
+          <br/>
+          <ButtonStyle>More...</ButtonStyle>
         </GeneralCardStyle>
       </div>
   );
@@ -43,21 +48,40 @@ const GeneralCardStyle = styled.div`
   align-items: center;
   flex-direction: column;
   border: solid 1px rgba(247, 33, 25, 0.2);
-  height: 600px;
+  height: 500px;
   width: 300px;
   background: black;
   text-align: center;
   padding: 15px;
 `;
+
 const TitleStyle = styled.div`
   font-size: 20px;
   color: red;
   font-family: "Andale Mono", serif;
 `;
-const OverviewStyle = styled.div`
-  font-size: 13px;
+
+const OriginalCountry = styled.div`
+  color: red;
+  font-family: "Andale Mono", serif;
+`;
+const FirstAirDateStyle = styled.div`
   color: snow;
   font-family: "Andale Mono", serif;
+`;
+
+const ButtonStyle = styled.button`
+  border: solid 1px #c50303;
+  height: 30px;
+  width: 150px;
+  background: transparent;
+  color: red;
+  margin-left: 20px;
+
+  &:hover {
+    background: transparent;
+    color: snow;
+  }
 `;
 
 export {Movie};

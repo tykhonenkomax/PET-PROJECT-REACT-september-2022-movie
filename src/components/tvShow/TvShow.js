@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styled from "styled-components";
 import ReactStars from "react-stars";
 
@@ -63,12 +64,12 @@ const GeneralCardStyle = styled.div`
   padding: 15px;
 `;
 
-const OverviewStyle = styled.div`
-  margin-top: 20px;
-  font-size: 13px;
-  color: snow;
-  font-family: "Andale Mono", serif;
-`;
+// const OverviewStyle = styled.div`
+//   margin-top: 20px;
+//   font-size: 13px;
+//   color: snow;
+//   font-family: "Andale Mono", serif;
+// `;
 
 const FirstAirDateStyle = styled.div`
   color: snow;
