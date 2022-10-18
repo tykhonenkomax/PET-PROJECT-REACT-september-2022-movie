@@ -54,7 +54,6 @@ const Movies = () => {
             movies.map(movie => <Movie key={movie.id} movie={movie}/>)
           }
 
-
         </GeneralStyle>
       </div>
   );

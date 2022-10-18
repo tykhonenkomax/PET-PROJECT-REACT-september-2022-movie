@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
+import ReactStars from "react-stars";
 
 const Movie = ({movie}) => {
 
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  }
 
   return (
       <div>
@@ -15,6 +19,13 @@ const Movie = ({movie}) => {
             <img style={{width: '200px'}} src={'https://image.tmdb.org/t/p/original/' + movie.poster_path}
                  alt="Movie Poster"/>
           </div>
+          <ReactStars
+              count={10}
+              onChange={ratingChanged}
+              size={24}
+              activeColor="#DC143C"
+              value={movie.vote_average}
+          />
 
           <OverviewStyle>
             {movie.overview}
@@ -32,8 +43,7 @@ const GeneralCardStyle = styled.div`
   align-items: center;
   flex-direction: column;
   border: solid 1px rgba(247, 33, 25, 0.2);
-
-  height: 550px;
+  height: 600px;
   width: 300px;
   background: black;
   text-align: center;

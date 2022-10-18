@@ -19,7 +19,6 @@ const SearchBar = () => {
                           value='Search your favorite video'
               >
                 <ButtonStyle>Search</ButtonStyle>
-
               </InputStyle>
               </label>
 
