@@ -2,12 +2,12 @@ import React from 'react';
 
 import styled from "styled-components";
 import ReactStars from "react-stars";
+import {NavLink} from "react-router-dom";
 
 const TvShow = ({tv}) => {
 
-  console.log(tv)
   const ratingChanged = (newRating) => {
-    console.log(newRating);
+    console.log(newRating)
   }
   return (
       <div>
@@ -40,7 +40,7 @@ const TvShow = ({tv}) => {
             {/*</OverviewStyle>*/}
             <br/>
 
-            <ButtonStyle>More...</ButtonStyle>
+            <NavLink to={tv.id.toString()} state={tv}><ButtonStyle>More...</ButtonStyle></NavLink>
 
           </GeneralCardStyle>
 

@@ -1,12 +1,13 @@
 import React from 'react';
+
 import styled from "styled-components";
 import ReactStars from "react-stars";
+import {NavLink} from "react-router-dom";
+
 
 const Movie = ({movie}) => {
 
-  console.log(movie)
   const ratingChanged = (newRating) => {
-    console.log(newRating);
   }
 
   return (
@@ -35,7 +36,7 @@ const Movie = ({movie}) => {
             Release date: {movie.release_date}
           </FirstAirDateStyle>
           <br/>
-          <ButtonStyle>More...</ButtonStyle>
+          <NavLink to={movie.id.toString()} state={movie}><ButtonStyle>More...</ButtonStyle></NavLink>
         </GeneralCardStyle>
       </div>
   );
@@ -77,6 +78,7 @@ const ButtonStyle = styled.button`
   background: transparent;
   color: red;
   margin-left: 20px;
+  cursor: pointer;
 
   &:hover {
     background: transparent;

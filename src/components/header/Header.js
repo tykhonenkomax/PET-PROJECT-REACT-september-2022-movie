@@ -5,9 +5,10 @@ import {NavLink} from "react-router-dom";
 
 import styled from "styled-components";
 import css from './header.module.css'
+import {MovieDetails} from "../movieDetails/MovieDetails";
 
 
-const setActive = ({isActive}) => isActive ? 'active-link' : ''
+// const setActive = ({isActive}) => isActive ? 'active-link' : ''
 
 const Header = () => {
 
