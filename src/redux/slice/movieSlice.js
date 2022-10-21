@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-
 import {movieServices} from "../../services";
+
 
 let initialState = {
   movies: [],
@@ -9,7 +9,7 @@ let initialState = {
   loading: false
 };
 
-let getAll = createAsyncThunk(
+const getAll = createAsyncThunk(
     'moviesSlice/getAll',
     async (page, {rejectWithValue}) => {
       try {
@@ -21,14 +21,26 @@ let getAll = createAsyncThunk(
     }
 );
 
+const searchMovie = createAsyncThunk(
+    'movieSlice/searchMovie',
+    async (movie, {rejectedWithValue}) => {
+      try {
+        const {data} = await movieServices.searchMovies(movie)
+        return data
+      } catch (e) {
+        return rejectedWithValue(e.response.data)
+      }
+    }
+);
+
 const moviesSlice = createSlice({
   name: 'moviesSlice',
   initialState,
   reducers: {},
   extraReducers: builder =>
       builder
-          .addCase(getAll.fulfilled, (state,action) => {
-            state.movies = action.payload.results
+          .addCase(getAll.fulfilled, (state, action) => {
+            state.movies = action.payload?.results
             state.loading = false
           })
           .addCase(getAll.rejected, (state, action) => {
@@ -38,11 +50,21 @@ const moviesSlice = createSlice({
           .addCase(getAll.pending, (state, action) => {
             state.loading = true
           })
+          .addCase(searchMovie.fulfilled, (state, action) => {
+            state.movies = action.payload?.results
+            state.loading = false
+          })
+          .addCase(searchMovie.pending, (state) => {
+            state.loading = true
+          })
 });
 
 const {reducer: moviesReducer} = moviesSlice;
 
-const moviesActions = {getAll}
+const moviesActions = {
+  getAll,
+  searchMovie
+}
 
 export {
   moviesReducer,

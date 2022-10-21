@@ -6,9 +6,10 @@ import {tvActions} from "../../redux/slice/tvSlice";
 import {TvShow} from "../tvShow/TvShow";
 import styled from "styled-components";
 import {useSearchParams} from "react-router-dom";
-import {SearchBar} from "../SearchBar/SearchBar";
+import {SearchBar} from "../searchBar/SearchBar";
 
 const TvShows = () => {
+
 
   const {tv, error, loading} = useSelector(state => state.tv);
 
@@ -41,10 +42,7 @@ const TvShows = () => {
           <ButtonStyle onClick={prevPage}>Prev</ButtonStyle>
           <ButtonStyle onClick={nextPage}>Next</ButtonStyle>
         </ButtonBox>
-        <SearchBarStyle>
-          <SearchBar/>
-        </SearchBarStyle>
-
+        <SearchBar/>
         <GeneralStyle>
           {loading && <h1>Loading.......................!</h1>}
 
@@ -76,7 +74,7 @@ const ButtonStyle = styled.button`
   font-family: "Andale Mono", serif;
 
   &:hover {
-    background: transparent;
+
     color: red;
   }
 `;
@@ -85,10 +83,6 @@ const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-`;
-
-const SearchBarStyle=styled.div`
-margin: 20px 200px 20px 200px ;
 `;
 
 export {TvShows};

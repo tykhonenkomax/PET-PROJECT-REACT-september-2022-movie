@@ -50,7 +50,6 @@ const TvShow = ({tv}) => {
   );
 };
 
-
 const GeneralCardStyle = styled.div`
   display: flex;
   justify-content: start;

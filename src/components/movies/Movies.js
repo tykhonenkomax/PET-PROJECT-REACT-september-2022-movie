@@ -8,6 +8,7 @@ import {useSearchParams} from "react-router-dom";
 import {Movie} from "../movie/Movie";
 
 import styled from "styled-components";
+import {SearchBar} from "../searchBar/SearchBar";
 
 
 const Movies = () => {
@@ -46,8 +47,12 @@ const Movies = () => {
           <ButtonStyle onClick={prevPage}>Prev</ButtonStyle>
           <ButtonStyle onClick={nextPage}>Next</ButtonStyle>
         </ButtonBox>
-
+        <SearchBarStyle>
+        <SearchBar/>
+        </SearchBarStyle>
+        <br/>
         <GeneralStyle>
+
           {loading && <h1>Loading.......................!</h1>}
           {error && JSON.stringify(error)}
           {
@@ -86,5 +91,10 @@ const ButtonBox = styled.div`
   margin-bottom: 20px;
 `;
 
+const SearchBarStyle = styled.div`
+display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export {Movies};

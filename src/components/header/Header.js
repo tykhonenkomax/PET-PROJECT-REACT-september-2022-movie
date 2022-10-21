@@ -2,10 +2,8 @@ import React from 'react';
 
 import {NavLink} from "react-router-dom";
 
-
 import styled from "styled-components";
 import css from './header.module.css'
-import {MovieDetails} from "../movieDetails/MovieDetails";
 
 
 // const setActive = ({isActive}) => isActive ? 'active-link' : ''
@@ -31,7 +29,6 @@ const Header = () => {
                      to={'/tv'}>Tv Shows</NavLink>
           </NavLinkContainerStyle>
          <br/>
-
         </SearchMenuStyle>
 
       </GeneralBoxStyle>
