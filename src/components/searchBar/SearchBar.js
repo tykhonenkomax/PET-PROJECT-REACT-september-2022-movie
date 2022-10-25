@@ -44,6 +44,7 @@ const InputStyle = styled.input`
   height: 30px;
   width: 400px;
   border-radius: 15px;
+  text-indent: 25px;
 `;
 
 const ButtonStyle = styled.button`
@@ -59,8 +60,4 @@ const ButtonStyle = styled.button`
   }
 `;
 
-const Style = styled`
-display: flex;
-  justify-content: center;
-`;
 export {SearchBar};
